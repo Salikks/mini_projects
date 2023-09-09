@@ -6,8 +6,6 @@ def generator_password(min_length, numbers=True, special_characters=True):
     digits = string.digits
     special = string.punctuation
 
-    print(letters, digits, special)
-
     characters = letters
     if numbers:
         characters += digits
@@ -28,6 +26,7 @@ def generator_password(min_length, numbers=True, special_characters=True):
         if new_char in special:
             has_special = True
 
+        meets_criteria = True
         if numbers:
             meets_criteria = has_numbers
         if special_characters:
@@ -35,6 +34,8 @@ def generator_password(min_length, numbers=True, special_characters=True):
 
     return pwd
 
-
-pwd = generator_password(10)
+min_length = int(input('Enter the minimum length: '))
+has_number = input('Do you want to have numbers (y/n) ?').lower() == 'y'
+has_special = input('Do you want to have special characters (y/n) ?').lower() == 'y'
+pwd = generator_password(min_length, has_number, has_special)
 print(pwd)
